@@ -1,0 +1,17 @@
+#temp files for testing purposes
+temp.cpp
+*temp*.cpp
+test.cpp
+tempcoderunner.cpp
+*temp*
+
+#for input,output & cerr files
+*.txt
+
+#executable binary files
+*.exe
+
+#VS-CODE files
+*code-workspace
+.vscode/
+./vscode
