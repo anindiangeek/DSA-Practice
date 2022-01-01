@@ -9,12 +9,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node
+struct Node
 {
     int data;
     Node *next;
-} Node;
-    
+};
 void InsertAtTail(int data);
 struct Node *NodeMaker(int data);
 
@@ -31,7 +30,7 @@ struct Node *tail = nullptr;
 
 int DeleteAtTail();
 
-void sort(struct Node *head)
+void Bubblesort(struct Node *head)
 {
     struct Node *current = head, *index = nullptr;
     int temp;
@@ -432,103 +431,103 @@ void deleteEvenNodes()
     }
 }
 
-int main()
-{
-    create();
-    int T = 0, data, pos;
-    puts("Initial List is:");
-    display(head);
-    while (T != -1)
-    {
-        puts("what you want to do?");
-        puts("1- Insert");
-        puts("2- Delete");
-        puts("3- Insert At head");
-        puts("4- Insert At End");
-        puts("5- Delete At head");
-        puts("6- Delete At tail");
-        puts("8- Sort");
-        puts("9- Length");
-        puts("10- Even Odd Length");
-        puts("11- Delete next to given");
-        puts("12- Insert next to given");
-        puts("13- Reverse a Linked list iterratively");
-        puts("14- Reverse a Linked list Recursively");
-        scanf("%d", &T);
-        switch (T)
-        {
-        case 1:
-            puts("Enter \"data,pos\"");
-            scanf("%d", &data);
-            scanf("%d", &pos);
-            Insert(data, pos);
-            break;
-        case 2:
-            puts("Enter \"pos\" to remove");
-            scanf("%d", &pos);
-            Remove(pos);
-            break;
-        case 3:
-            printf("\nEnter Data:");
-            scanf("%d", &data);
-            InsertAtHead(data);
-            break;
-        case 4:
-            printf("\nEnter Data:");
-            scanf("%d", &data);
-            InsertAtTail(data);
-            break;
-        case 5:
-            DeleteAtHead();
-            break;
-        case 6:
-            DeleteAtTail();
-            break;
-        case 7:
-            display(head);
-            break;
-        case 8:
-            sort(head);
-            display(head);
-            break;
-        case 9:
-            display(head);
-            printf("\n%d\n", length(head));
-            break;
-        case 10:
-            display(head);
-            evenoddcounter(head);
-            break;
-        case 11:
-            puts("Enter the data");
-            scanf("%d", &data);
-            deleteatgiven(data);
-            display(head);
-            break;
-        case 12:
-            puts("Enter the data after which you want to insert and data of new node");
-            scanf("%d", &data);
-            scanf("%d", &pos);
-            insertgiven(data, pos);
-            display(head);
-            break;
-        case 13:
-            puts("Orignial List is :");
-            display(head);
-            head = reverseList(head);
-            puts("Reversed List is :");
-            display(head);
-            break;
-        case 14:
-            puts("Orignial List is :");
-            display(head);
-            recursivereverse(head);
-            puts("Reversed List is :");
-            display(head);
-            break;
-        default:
-            break;
-        }
-    }
-    return 0;
-}
+// int main()
+// {
+//     create();
+//     int T = 0, data, pos;
+//     puts("Initial List is:");
+//     display(head);
+//     while (T != -1)
+//     {
+//         puts("what you want to do?");
+//         puts("1- Insert");
+//         puts("2- Delete");
+//         puts("3- Insert At head");
+//         puts("4- Insert At End");
+//         puts("5- Delete At head");
+//         puts("6- Delete At tail");
+//         puts("8- Sort");
+//         puts("9- Length");
+//         puts("10- Even Odd Length");
+//         puts("11- Delete next to given");
+//         puts("12- Insert next to given");
+//         puts("13- Reverse a Linked list iterratively");
+//         puts("14- Reverse a Linked list Recursively");
+//         scanf("%d", &T);
+//         switch (T)
+//         {
+//         case 1:
+//             puts("Enter \"data,pos\"");
+//             scanf("%d", &data);
+//             scanf("%d", &pos);
+//             Insert(data, pos);
+//             break;
+//         case 2:
+//             puts("Enter \"pos\" to remove");
+//             scanf("%d", &pos);
+//             Remove(pos);
+//             break;
+//         case 3:
+//             printf("\nEnter Data:");
+//             scanf("%d", &data);
+//             InsertAtHead(data);
+//             break;
+//         case 4:
+//             printf("\nEnter Data:");
+//             scanf("%d", &data);
+//             InsertAtTail(data);
+//             break;
+//         case 5:
+//             DeleteAtHead();
+//             break;
+//         case 6:
+//             DeleteAtTail();
+//             break;
+//         case 7:
+//             display(head);
+//             break;
+//         case 8:
+//             Bubblesort(head);
+//             display(head);
+//             break;
+//         case 9:
+//             display(head);
+//             printf("\n%d\n", length(head));
+//             break;
+//         case 10:
+//             display(head);
+//             evenoddcounter(head);
+//             break;
+//         case 11:
+//             puts("Enter the data");
+//             scanf("%d", &data);
+//             deleteatgiven(data);
+//             display(head);
+//             break;
+//         case 12:
+//             puts("Enter the data after which you want to insert and data of new node");
+//             scanf("%d", &data);
+//             scanf("%d", &pos);
+//             insertgiven(data, pos);
+//             display(head);
+//             break;
+//         case 13:
+//             puts("Orignial List is :");
+//             display(head);
+//             head = reverseList(head);
+//             puts("Reversed List is :");
+//             display(head);
+//             break;
+//         case 14:
+//             puts("Orignial List is :");
+//             display(head);
+//             recursivereverse(head);
+//             puts("Reversed List is :");
+//             display(head);
+//             break;
+//         default:
+//             break;
+//         }
+//     }
+//     return 0;
+// }

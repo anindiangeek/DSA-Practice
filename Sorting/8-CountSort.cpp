@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define max_element 100
+#define max_ele 100
 
 /*
 
@@ -26,19 +26,17 @@ using namespace std;
     * As the index cannot be negative we can't apply this algorithm directly to set involving -ve ints, we can modify it
         -> We will find the minimum element and keep it at index 0 and we will adjust the rest of elements accordingly.
 
-
-
 */
 
 void StableCountSort(int a[], int size)
 {
-    int b[max_element] = {0};
-    int output[max_element];
+    int b[max_ele] = {0};
+    int output[max_ele];
     for (int i = 0; i < size; i++)
         b[a[i]]++;
 
     // finding prefix sum.
-    for (int i = 1; i <= max_element; i++)
+    for (int i = 1; i <= max_ele; i++)
         b[i] += b[i + 1];
 
     // this function is incomplete and requires attention.
@@ -46,11 +44,11 @@ void StableCountSort(int a[], int size)
 
 void BasicCountSort(int a[], int size)
 {
-    int b[max_element] = {0}; // to b the frequency of the element.
+    int b[max_ele] = {0}; // to b the frequency of the element.
     for (int i = 0; i < size; i++)
         b[a[i]]++;
 
-    for (int i = 0, j = 0; i < max_element; i++)
+    for (int i = 0, j = 0; i < max_ele; i++)
         while (b[i]--)
             a[j++] = i;
 }

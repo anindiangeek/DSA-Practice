@@ -63,7 +63,7 @@ void MergeSort(int a[], int left, int right)
 
 int main()
 {
-    int a[] = {4, 2, 1, 3};
+    int a[] = {2, 4, 1, 3, 5};
     int size = sizeof(a) / sizeof(int);
 
     MergeSort(a, 0, size - 1);

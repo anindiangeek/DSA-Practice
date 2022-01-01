@@ -13,13 +13,13 @@ void create(struct queue *q)
 {
     printf("\nEnter the size of the queue : ");
     scanf("%d", &q->size);
-    q->frontindex = q->rearindex = -1;
+    q->frontindex = q->rearindex = 0;
     q->Arr = (int *)malloc(sizeof(int) * q->size);
 }
 
 int isfull(struct queue *q)
 {
-    return (q->rearindex == q->size - 1) ? 1 : 0;
+    return ((q->rearindex + 1) % q->size == q->frontindex) ? 1 : 0;
 }
 
 int isEmpty(struct queue *q)
@@ -32,7 +32,10 @@ void enqueue(struct queue *q, int data)
     if (isfull(q))
         printf("\nQueue is full\n");
     else
-        q->Arr[++q->rearindex] = data;
+    {
+        q->rearindex = (q->rearindex + 1) % q->size;
+        q->Arr[q->rearindex] = data;
+    }
 }
 
 int dequeue(struct queue *q)
@@ -40,15 +43,18 @@ int dequeue(struct queue *q)
     if (isEmpty(q))
         return -1;
     else
-        return q->Arr[q->frontindex++];
+    {
+        int x = q->Arr[q->frontindex];
+        q->frontindex = (q->frontindex + 1) % q->size;
+        return x;
+    }
 }
 
 void display(struct queue *q)
 {
-    puts("\nQUEUE :\n");
+    puts("QUEUE :");
     for (int i = q->frontindex + 1; i <= q->rearindex; i++)
         printf("%d => ", q->Arr[i]);
-    printf("\n");
     printf("\n");
 }
 
@@ -73,13 +79,13 @@ int main()
             printf("\nEnter the data to Enqueue :");
             scanf("%d", &data);
             enqueue(&q, data);
-            display(&q);
             break;
         case 2:
-            printf("\nDeququed", dequeue(&q));
+            printf("\n Dequeued \n", dequeue(&q));
+            break;
         default:
-            display(&q);
             break;
         }
+        display(&q);
     }
 }

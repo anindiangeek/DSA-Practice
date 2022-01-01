@@ -1,21 +1,17 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-// This is Experimental and not working do not touch, it is not my code it is written by my friend
-// I took it to check it and didn't want to do it.
-
-struct POLYNO
+struct Node
 {
     int coeff;
     int exp;
-    struct POLYNO *next;
+    struct Node *next;
 };
 
-struct POLYNO *create()
+struct Node *create()
 {
-    POLYNO *poly = nullptr;
-    struct POLYNO *t, *last = NULL;
+    Node *poly = nullptr;
+    struct Node *t, *last = NULL;
     int num = 0;
 
     printf("\nEnter number of terms");
@@ -24,7 +20,7 @@ struct POLYNO *create()
 
     for (int i = 0; i < num; i++)
     {
-        t = (struct POLYNO *)malloc(sizeof(struct POLYNO));
+        t = (struct Node *)malloc(sizeof(struct Node));
         scanf("%d%d", &t->coeff, &t->exp);
         t->next = NULL;
         if (poly == NULL)
@@ -37,9 +33,10 @@ struct POLYNO *create()
     }
     return poly;
 }
-struct POLYNO *append(struct POLYNO *thead, int c, int e)
+
+struct Node *append(struct Node *thead, int c, int e)
 {
-    struct POLYNO *newPOLYNO = (struct POLYNO *)malloc(sizeof(struct POLYNO));
+    struct Node *newPOLYNO = (struct Node *)malloc(sizeof(struct Node));
     newPOLYNO->coeff = c;
     newPOLYNO->exp = e;
     if (thead == NULL)
@@ -47,17 +44,17 @@ struct POLYNO *append(struct POLYNO *thead, int c, int e)
         newPOLYNO->next = NULL;
         return newPOLYNO;
     }
-    struct POLYNO *trav = thead;
+    struct Node *trav = thead;
     while (trav->next != NULL)
         trav = trav->next;
     trav->next = newPOLYNO;
     newPOLYNO->next = NULL;
     return thead;
 }
-struct POLYNO *ADD(POLYNO *P1, POLYNO *P2)
+struct Node *ADD(Node *P1, Node *P2)
 {
-    struct POLYNO *ans = NULL, *itr = NULL;
-    struct POLYNO *t1 = P1, *t2 = P2;
+    struct Node *ans = NULL, *itr = NULL;
+    struct Node *t1 = P1, *t2 = P2;
     while (t1 != NULL && t2 != NULL)
     {
         if (t1->exp > t2->exp)
@@ -92,17 +89,16 @@ struct POLYNO *ADD(POLYNO *P1, POLYNO *P2)
     return ans;
 }
 
-struct POLYNO *new_POLYNO()
+struct Node *new_POLYNO()
 {
-    struct POLYNO *t1;
-    t1 = (struct POLYNO *)malloc(sizeof(struct POLYNO));
+    struct Node *t1;
+    t1 = (struct Node *)malloc(sizeof(struct Node));
     return t1;
 }
 
-// multiply not working
-struct POLYNO *MULTIPLY(struct POLYNO *h1, struct POLYNO *h2)
+struct Node *MULTIPLY(struct Node *h1, struct Node *h2)
 {
-    struct POLYNO *ptr, *p1, *p2, *h3 = NULL, *prev;
+    struct Node *ptr, *p1, *p2, *h3 = NULL, *prev;
     p1 = h1;
     ptr = new_POLYNO();
     h3 = ptr;
@@ -144,7 +140,7 @@ struct POLYNO *MULTIPLY(struct POLYNO *h1, struct POLYNO *h2)
     return h3;
 }
 
-void Display(struct POLYNO *p)
+void Display(struct Node *p)
 {
     while (p)
     {
@@ -156,9 +152,9 @@ void Display(struct POLYNO *p)
 
 int main()
 {
-    POLYNO *P1 = create();
-    POLYNO *P2 = create();
-    POLYNO *P3 = ADD(P1, P2);
+    Node *P1 = create();
+    Node *P2 = create();
+    Node *P3 = ADD(P1, P2);
     puts("Addition is :");
     Display(P3);
     return 0;

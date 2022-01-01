@@ -22,7 +22,7 @@ void display(struct Node *head)
 }
 
 // to avoid code repetition made a new function named node maker
-inline struct Node *NodeMaker(int data)
+struct Node *NodeMaker(int data)
 {
 
     struct Node *temp = (Node *)malloc(sizeof(struct Node));
@@ -136,6 +136,23 @@ void create()
     }
 }
 
+//reverse A doubly Linked List.
+void Reverse()
+{
+    struct Node *itr = head, *prev = head;
+    while (itr != nullptr)
+    {
+        prev = itr->prev;
+        itr->prev = itr->next;
+        itr->next = prev;
+        itr = itr->prev;
+    }
+
+    if (prev != nullptr)
+        head = prev->prev;
+}
+
+// the reverse of DLL can be done in o(1) time, if can just swap head and tail nodes. and move forward by prev pointer.
 void SwapHeadandTail()
 {
     Node *p = head, *q = tail;
@@ -165,7 +182,9 @@ void SwapHeadandTail()
 end:
     head = q;
     tail = p;
+
 }
+
 int main()
 {
     create();
@@ -181,6 +200,7 @@ int main()
         puts("6- Delete At tail");
         puts("7-Display");
         puts("8-SwapFirst&LastNode");
+        puts("9-Reverse");
         scanf("%d", &T);
         switch (T)
         {
@@ -205,6 +225,9 @@ int main()
             break;
         case 8:
             SwapHeadandTail();
+            break;
+        case 9:
+            Reverse();
             break;
         default:
             break;

@@ -12,6 +12,7 @@ using namespace std;
     * inplace ; do not requires extra space
 */
 
+// this works but is not a valid selection sort algorithm.  
 void SelectionSort(int a[], int size)
 {
     for (int i = 0; i < size; i++)
